@@ -4,6 +4,7 @@ function totalShopping(shopping) {
   let totalShopping = 0;
 
   for (let i = 0; i < shopping.length; i++) {
+    console.log(shopping[i]);
     totalPrice += shopping[i].price * shopping[i].quantity;
   }
 
