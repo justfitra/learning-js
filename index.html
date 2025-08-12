@@ -5,7 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learning JS</title>
   </head>
-  <body>
-    <script src="/soal1.js"></script>
+  <body id="body">
+    <input type="text" id="name" />
+    <button id="lengthCheck">Cek Panjang Nama</button>
+    <p id="result"></p>
+
+    <button style="background-color: red; color: white" id="red">Red</button>
+    <button style="background-color: green; color: white" id="green">
+      Green
+    </button>
+    <button style="background-color: blue; color: white" id="blue">Blue</button>
+
+    <input type="text" placeholder="masukkan tahun Lahir" id="born" />
+    <button id="ageCheck">Cek Umur</button>
+    <p id="ageResult"></p>
+
+    <input
+      type="checkbox"
+      id="bangun-pagi"
+      name="vehicle1"
+      value="bangun-pagi"
+    />
+    <label for="vehicle1"> Bangun Pagi</label><br />
+    <input type="checkbox" id="olahraga" name="vehicle2" value="olahraga" />
+    <label for="vehicle2"> Olahraga</label><br />
+    <input
+      type="checkbox"
+      id="belajar-coding"
+      name="vehicle3"
+      value="belajar-coding"
+    />
+    <label for="vehicle3"> Belajar Coding</label><br />
+
+    <p id="activity-count"></p>
+
+    <input type="text" id="suhu" placeholder="Masukkan Suhu Celcius" />
+    <button id="suhuCheck">Konversi ke Farenheit</button>
+    <p id="resultF"></p>
+    <script src="/DOM/soal1.js"></script>
   </body>
 </html>

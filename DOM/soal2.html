@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM 2 SOAL 2</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="calculator">
+      <input
+        type="number"
+        name="number1"
+        id="number1"
+        placeholder="Masukkan angka pertama"
+      />
+      <input
+        type="number"
+        name="number2"
+        id="number2"
+        placeholder="Masukkan angka kedua"
+      />
+      <select name="options" id="options">
+        <option value="default" selected>Select Options</option>
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">x</option>
+        <option value="/">/</option>
+      </select>
+
+      <button id="resultButton">Hasil</button>
+    </div>
+    <div>
+      <p id="result"></p>
+    </div>
+
+    <div>
+      <input type="text" id="inputName" placeholder="Masukkan Nama" />
+      <button id="nameCheck">Cek Nama</button>
+      <p id="nameResult"></p>
+    </div>
+    <div>
+      <input type="password" id="inputPassword" />
+      <input type="checkbox" id="change" />
+    </div>
+
+    <div style="display: flex; flex-direction: column">
+      <label for="bangun-pagi">Bangun Pagi</label>
+      <input type="checkbox" value="bangun-pagi" id="bangun-pagi" />
+      <label for="olahraga">Olahraga</label>
+      <input type="checkbox" value="olahraga" id="olahraga" />
+      <label for="belajar">Belajar</label>
+      <input type="checkbox" value="belajar" id="belajar" />
+      <label for="tidur-siang">Tidur Siang</label>
+      <input type="checkbox" value="tidur-siang" id="tidur-siang" />
+    </div>
+    <div>
+      <p id="length-result"></p>
+      <div id="on-check"></div>
+    </div>
+    <div>
+      <input type="number" name="age" id="age" placeholder="Masukkan umur" />
+      <button id="legalityCheck">Cek Legalitas</button>
+      <p id="legalityAge"></p>
+    </div>
+    <div>
+      <p id="number">0</p>
+      <button id="increment">Tambah</button>
+      <button id="decrement">Kurang</button>
+      <button id="reset">Reset</button>
+    </div>
+    <div>
+      <input type="email" id="email" />
+      <button id="validate">Validate</button>
+      <p id="validateResult"></p>
+    </div>
+
+    <div>
+      <textarea name="text" id="text"></textarea>
+      <button id="count">Hitung</button>
+      <p id="textNoSpace"></p>
+      <p id="textPerWord"></p>
+    </div>
+    <script src="soal2.js"></script>
+  </body>
+</html>
