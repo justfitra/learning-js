@@ -41,7 +41,7 @@ deleteParagraph.addEventListener("click", function () {
   // or
   container.removeChild(paragraph);
 });
-console.log(paragraph);
+// console.log(paragraph);
 
 // Edit Element
 const editParagraph = document.getElementById("edit");
@@ -57,4 +57,50 @@ paragraph.style.font = "10px";
 paragraph.classList.add("highlight");
 paragraph.classList.remove("highlight");
 paragraph.classList.toggle("active");
-console.log(paragraph.classList.contains("active"));
+// console.log(paragraph.classList.contains("active"));
+
+// DOM Manipulation Expert
+
+// Berguna untuk membuat kumpulan elemen baru di memori dulu, lalu sekali render ke DOM. Ini bikin performa lebih cepat kalau tambah banyak elemen.
+const fragment = document.createDocumentFragment();
+
+for (let i = 1; i <= 100; i++) {
+  const li = document.createElement("li");
+  li.textContent = `Item ${i}`;
+  fragment.appendChild(li);
+}
+
+document.getElementById("list").appendChild(fragment);
+
+// 🔹 2. insertAdjacentHTML()
+
+// Cara cepat untuk menambahkan HTML tanpa createElement.
+
+/*"beforebegin" — sebelum element
+
+"afterbegin" — di awal element
+
+"beforeend" — di akhir element
+
+"afterend" — setelah element
+ */
+
+document
+  .getElementById("list")
+  .insertAdjacentHTML("beforeend", "<li>Item Baru</li>");
+
+// 🔹 3. cloneNode()
+
+// Copy elemen (bisa beserta isinya).
+
+let clone = paragraph.cloneNode(true);
+console.log(paragraph);
+
+document.body.appendChild(clone);
+
+// 🔹 4. dataset untuk atribut data-*
+
+// Bisa dipakai buat simpan info tambahan di HTML.
+
+const btn = document.querySelector("button");
+console.log(btn.dataset.id); // "123"

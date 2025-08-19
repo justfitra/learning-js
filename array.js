@@ -9,4 +9,4 @@ for (let i = 0; i < teman.length; i++) {
 }
 
 console.log("nama nama semua teman : " + teman2);
-console.log(teman.filter("bu", 2, 4));
+console.log(teman.filter("budi", 2, 4));

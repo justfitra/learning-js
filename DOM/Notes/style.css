@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+nav {
+  background-color: #333;
+  color: white;
+  padding: 20px 40px;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+#form {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+#noteInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#noteContent {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  width: 20%;
+}
+
+.errorMsgTitle {
+  color: red;
+  font-size: small;
+}
+.errorMsgContent {
+  color: red;
+  font-size: small;
+}
