@@ -4,25 +4,29 @@ let products = [
   { id: 3, name: "Es Teh", price: 5000 },
 ];
 
-// Simpan ke localStorage
-localStorage.setItem("products", JSON.stringify(products));
+// add data products to Local Storage
+localStorage.setItem("data", JSON.stringify(products));
 
-// 1️⃣ Read Data (ambil semua produk)
-let data = JSON.parse(localStorage.getItem("products"));
+// get all data
+let data = JSON.parse(localStorage.getItem("data"));
+// console.log(data);
+
+// create new data
+data.push(
+  { id: 4, name: "Es Jeruk", price: 14000 },
+  { id: 5, name: "Es Doger", price: 5000 }
+);
 console.log(data);
+// update data
+data = data.map((res) => (res.id === 1 ? { ...res, name: "Nasi Uduk" } : res));
+localStorage.setItem("data", JSON.stringify(data));
 
-// 2️⃣ Create Data (tambah produk baru)
-data.push({ id: 4, name: "Bakso", price: 18000 });
-localStorage.setItem("products", JSON.stringify(data));
+// delete data
+data = data.filter((res) => res.id !== 4);
+localStorage.setItem("data", JSON.stringify(data));
 
-// 3️⃣ Update Data (ubah nama/price produk tertentu)
-data = data.map((item) => (item.id === 2 ? { ...item, price: 13000 } : item));
-localStorage.setItem("products", JSON.stringify(data));
+// search data
+data = data.find((res) => res.name === "Es Teh");
+//
 
-// 4️⃣ Delete Data (hapus produk tertentu)
-data = data.filter((item) => item.id !== 3);
-localStorage.setItem("products", JSON.stringify(data));
-
-// 5️⃣ Search Data (cari produk berdasarkan nama)
-let result = data.find((item) => item.name === "Nasi Goreng");
-console.log(result);
+// localStorage.clear();
