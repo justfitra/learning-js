@@ -40,17 +40,37 @@ form.addEventListener("submit", function (e) {
   todos.push(task);
   localStorage.setItem("task", JSON.stringify(todos));
   console.log(li);
-
   editButton.addEventListener("click", function () {
-    span.remove();
-    const editTask = prompt("Edit Tugas ", task);
-    editTask.type = "text";
-    li.prepend(editTask);
+    let taskLists = JSON.parse(localStorage.getItem("task")) || [];
 
-    li.replaceChild(editTask, span);
+    // Hapus task lama (pakai filter)
+    taskLists = taskLists.filter((task) => task !== span.textContent);
+
+    // Prompt untuk task baru
+    const editTask = prompt("Edit Tugas:", span.textContent);
+
+    if (editTask && editTask.trim() !== "") {
+      // Update span di tampilan
+      span.textContent = editTask.trim();
+
+      // Tambah task baru ke array
+      taskLists.push(editTask.trim());
+
+      // Simpan lagi ke localStorage
+      localStorage.setItem("task", JSON.stringify(taskLists));
+    }
   });
 
   deleteButton.addEventListener("click", function () {
+    let taskLists = JSON.parse(localStorage.getItem("task")) || [];
+
+    // Hapus task sesuai text
+    taskLists = taskLists.filter((task) => task !== span.textContent);
+
+    // Simpan lagi
+    localStorage.setItem("task", JSON.stringify(taskLists));
+
+    // Hapus dari tampilan
     todoList.removeChild(li);
   });
 
@@ -111,35 +131,36 @@ window.addEventListener("load", function (e) {
     li.appendChild(endButton);
     todoList.appendChild(li);
     editButton.addEventListener("click", function () {
-      // console.log("clicked");
-      let taksLists = JSON.parse(localStorage.getItem("task"));
-      // 2. Hapus item tertentu (pakai filter)
-      taksLists = taksLists.filter((task) => task !== span.textContent);
+      let taskLists = JSON.parse(localStorage.getItem("task")) || [];
 
-      // 3. Simpan lagi ke localStorage
-      localStorage.setItem("task", JSON.stringify(taksLists));
+      // Hapus task lama (pakai filter)
+      taskLists = taskLists.filter((task) => task !== span.textContent);
 
-      // console.log(tasks);
+      // Prompt untuk task baru
+      const editTask = prompt("Edit Tugas:", span.textContent);
 
-      const editTask = prompt("Edit Tugas " + span.textContent);
-      const spanEdit = document.createElement("span");
-      span.remove();
+      if (editTask && editTask.trim() !== "") {
+        // Update span di tampilan
+        span.textContent = editTask.trim();
 
-      spanEdit.prepend(editTask);
-      console.log(spanEdit.textContent);
-      todos.push(spanEdit.textContent);
-      localStorage.setItem("task", JSON.stringify(todos));
-      li.prepend(spanEdit);
+        // Tambah task baru ke array
+        taskLists.push(editTask.trim());
 
-      li.replaceChild(spanEdit, span);
+        // Simpan lagi ke localStorage
+        localStorage.setItem("task", JSON.stringify(taskLists));
+      }
     });
-    deleteButton.addEventListener("click", function () {
-      let taksLists = JSON.parse(localStorage.getItem("task"));
-      // 2. Hapus item tertentu (pakai filter)
-      taksLists = taksLists.filter((task) => task !== span.textContent);
 
-      // 3. Simpan lagi ke localStorage
-      localStorage.setItem("task", JSON.stringify(taksLists));
+    deleteButton.addEventListener("click", function () {
+      let taskLists = JSON.parse(localStorage.getItem("task")) || [];
+
+      // Hapus task sesuai text
+      taskLists = taskLists.filter((task) => task !== span.textContent);
+
+      // Simpan lagi
+      localStorage.setItem("task", JSON.stringify(taskLists));
+
+      // Hapus dari tampilan
       todoList.removeChild(li);
     });
   });
