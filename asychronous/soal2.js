@@ -1,87 +1,67 @@
 /*
-Typewriter Effect ⌨️
+Soal 1 – Alarm Reminder
 
-Buat program yang menampilkan teks "Belajar JavaScript itu asik!" ke console, tapi huruf demi huruf muncul setiap 300ms (mirip mesin ketik).
-Gunakan setTimeout recursive.
+Buat fungsi setReminder(message, seconds) yang:
+
+Tampil "Reminder akan muncul dalam X detik...".
+
+Setelah X detik → tampilkan pesan reminder.
+
+👉 Contoh:
+
+setReminder("Bangun belajar JavaScript!", 3);
+// Output:
+// Reminder akan muncul dalam 3 detik...
+// (tunggu 3 detik)
+// Bangun belajar JavaScript!
 */
 
-// const word = "Belajar JavaScript itu asik!";
-// const wordArr = word.split("");
-// for (let i = 0; i < wordArr.length; i++) {
-//   setTimeout(() => {
-//     console.log(wordArr[i]);
-//   }, i * 300);
-// }
-
-/*
-Typewriter Effect ⌨️
-Versi Recursive dengan setTimeout
-*/
-
-// const word = "Belajar JavaScript itu asik!";
-// const wordArr = word.split("");
-
-// let i = 0;
-
-// function typeWriter() {
-//   if (i < wordArr.length) {
-//     console.log(wordArr[i]); // cetak huruf
-//     i++;
-//     setTimeout(typeWriter, 300); // panggil lagi setelah 300ms
-//   } else {
-//     console.log("✅ Done!"); // setelah selesai
-//   }
-// }
-
-// typeWriter(); // mulai
-// function getRndInteger(min, max) {
-//   return Math.floor(Math.random() * (max - min)) + min;
-// }
-// let start = 10;
-// const Countdown = () => {
-//   if (start > 0) {
-//     console.log(start);
-//     start--;
-//     const random = getRndInteger(500, 2000);
-//     setTimeout(Countdown, random);
-//   } else {
-//     console.log("Game Over");
-//   }
+// const setReminder = (message, seconds) => {
+//   console.log("Reminder akan muncul dalam 3 detik");
+//   return setTimeout(() => {
+//     console.log(message);
+//   }, seconds * 1000);
 // };
 
-// Countdown();
-// Interval 1 -> setiap 1 detik cetak "Ping"
-// const pingInterval = setInterval(() => {
-//   console.log("Ping");
+// setReminder("Belajar javaScript!", 3);
+
+/*
+⚡ Soal 2 – Dynamic Progress Bar
+
+Buat simulasi progress bar di console:
+
+Setiap 1 detik, progress naik 10%.
+
+Kalau sudah 100% → tampil "Selesai!".
+*/
+// let persent = 0;
+// const progress = setInterval(() => {
+//   console.log(`Progress : ${persent}%`);
+//   persent += 10;
+//   if (persent === 10) {
+//     clearInterval(progress);
+//     console.log("Selesai!");
+//   }
 // }, 1000);
 
-// // Interval 2 -> setiap 2 detik cetak "Pong"
-// const pongInterval = setInterval(() => {
-//   console.log("Pong");
-// }, 2000);
+let timeLeft = 5; // countdown 5 detik
+let defused = false;
 
-// // Stop semua interval setelah 10 detik
-// setTimeout(() => {
-//   clearInterval(pingInterval);
-//   clearInterval(pongInterval);
-//   console.log("Game Over ⏹️");
-// }, 10000);
+const bombTimer = setInterval(() => {
+  if (timeLeft > 0 && !defused) {
+    console.log(`💣 Bom akan meledak dalam ${timeLeft} detik`);
+    timeLeft--;
+  } else if (defused) {
+    console.log("✅ Bom berhasil dijinakkan");
+    clearInterval(bombTimer);
+  } else {
+    console.log("💥 BOOM!");
+    clearInterval(bombTimer);
+  }
+}, 1000);
 
-function getRndInteger(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-const randomstepA = getRndInteger(1, 3);
-const randomstepB = getRndInteger(2, 4);
-
-const raceSimulation = (a, b) => {
-  const pingInterval = setInterval(() => {
-    console.log(randomstepA);
-
-    if (randomstepA || randomstepB === 20) {
-      clearInterval(pingInterval);
-    }
-  }, 1000);
+const defuse = () => {
+  defused = true;
 };
 
-raceSimulation("Fitra", "Tutur");
+defuse();
