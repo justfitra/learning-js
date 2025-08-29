@@ -20,7 +20,7 @@ setReminder("Bangun belajar JavaScript!", 3);
 //   console.log("Reminder akan muncul dalam 3 detik");
 //   return setTimeout(() => {
 //     console.log(message);
-//   }, seconds * 1000);
+//   }, seconds * 1000 );
 // };
 
 // setReminder("Belajar javaScript!", 3);
