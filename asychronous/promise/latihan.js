@@ -9,15 +9,12 @@ Lalu tampilkan hasilnya ke console menggunakan .then().
 
 */
 const data = new Promise((resolve, reject) => {
-  let value = true;
-
-  if (value) {
-    resolve("Data berhasil diambil");
-  } else {
-    reject("Data gagal diambil");
-  }
+  setTimeout(() => {
+    resolve("Data berhasil diambil ✅");
+  });
 });
 
+data.then((res) => console.log(res));
 /*
 
 
@@ -29,7 +26,12 @@ Buat sebuah Promise yang gagal (reject) dengan pesan:
 Lalu tangkap error-nya dengan .catch().
 */
 
-data.then((res) => console.log(res));
+const gagal = new Promise((resolve, reject) => {
+  reject("Error: Data gagal diambil ❌");
+});
+
+gagal.catch((err) => console.log(err));
+
 /*
 
 /*
@@ -55,7 +57,7 @@ const checkStock = (buah) => {
 
 checkStock("manggis")
   .then((res) => console.log(res))
-  .catch((res) => console.log(res));
+  .catch((err) => console.log(err));
 /*
 📌 Soal 4: Promise chaining
 
@@ -71,7 +73,7 @@ Semua langkah dilakukan berurutan dengan .then().
 */
 
 const user = new Promise((resolve, reject) => {
-  let data = true;
+  let data = false;
 
   if (data) {
     resolve("User ditemukan 👤");
@@ -90,4 +92,4 @@ user
     return "Barang berhasil ditemukan 📦";
   })
   .then((res) => console.log(res))
-  .catch((res) => console.log(res));
+  .catch((err) => console.log(err));
