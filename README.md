@@ -18,8 +18,9 @@ Tujuan: Paham cara kerja JavaScript dan bisa menulis kode dasar.
 - Function dasar ✔️
 - Array dan method dasar (push, pop, length) ✔️
 - Object dasar ✔️
-  
+
   ■ Target Akhir:
+
 - Bisa bikin program sederhana (seperti kalkulator atau biodata otomatis) ✔️
 - Mengerti logika dasar coding ✔️
 
@@ -37,8 +38,9 @@ Tujuan: Bisa mengatur alur kode, mengelola data, dan memahami logika lebih dalam
 - Nested object & array ✔️
 - Destructuring dan spread operator ✔️
 - Optional chaining (?.) ✔️
-  
+
   ■ Target Akhir:
+
 - Bisa mengolah data dan membuat logic aplikasi lebih kompleks ✔️
 - Mulai belajar menulis kode rapi dan efisien ✔️
 
@@ -52,10 +54,11 @@ Tujuan: Bisa menghubungkan JavaScript dengan tampilan web (HTML/CSS)
 - Manipulasi elemen HTML (getElementById, querySelector) ✔️
 - Event Handling: klik, input, submit ✔️
 - Membuat website interaktif (seperti to-do list) ✔️
-- Local Storage
-  
+- Local Storage ✔️
+
   ■ Target Akhir:
-- Bisa bikin aplikasi web front-end sederhana
+
+- Bisa bikin aplikasi web front-end sederhana ✔️
 
 ■ Level 4: Modularisasi & Asynchronous (21–28 Hari)
 
@@ -63,17 +66,17 @@ Tujuan: Mengelola proyek besar, dan memahami data async seperti API.
 
 ■ Materi:
 
-- Modularisasi (export & import)
-- Asynchronous JavaScript:
-- setTimeout, setInterval
-- Promise
-- async/await
+- Modularisasi (export & import) ✔️
+- Asynchronous JavaScript: ✔️
+- Menangani error (try/catch) ✔️
+- setTimeout, setInterval ✔️
+- Promise ✔️
+- async/await ✔️
 - Fetch API (mengambil data dari server)
-- Menangani error (try/catch)
 - JSON
-  
+
   ■ Target Akhir:
-  
+
 - Bisa membuat aplikasi yang ambil data dari internet
 - Bisa menata file JS dalam folder terpisah
 
