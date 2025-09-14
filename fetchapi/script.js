@@ -1,8 +1,10 @@
+import getGenre from "./genre.js";
 import getPopularMovies from "./popular.js";
 import getTopRatedMovies from "./toprated.js";
 import Swiper from "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.mjs";
 
 const ul = document.getElementById("ul");
+const genre = document.getElementById("genre-ul");
 const swiperWrapper = document.getElementById("swiper-wrapper");
 
 const swiper = new Swiper(".swiper", {
@@ -25,6 +27,7 @@ const swiper = new Swiper(".swiper", {
 window.addEventListener("load", function () {
   const popularMovies = getPopularMovies();
   const topRatedMovies = getTopRatedMovies();
+  const movieGenre = getGenre();
 
   popularMovies.then((res) => {
     res.slice(0, 5).map((x) => {
@@ -78,6 +81,19 @@ window.addEventListener("load", function () {
       console.log(div);
 
       swiperWrapper.appendChild(div);
+    });
+  });
+
+  movieGenre.then((res) => {
+    console.log(res);
+
+    res.map((x) => {
+      const li = document.createElement("li");
+
+      li.classList.toggle("genre");
+      li.textContent = x.name;
+
+      genre.appendChild(li);
     });
   });
 });
