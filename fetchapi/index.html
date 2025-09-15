@@ -23,11 +23,19 @@
         <div>
           <h1>VisMovies</h1>
         </div>
-        <div>
+        <div style="display: flex; gap: 10px; align-items: center; gap: 20px">
           <ul>
             <li>Film</li>
-            <li>Serial TV</li>
           </ul>
+          <div>
+            <input
+              type="text"
+              name=""
+              id=""
+              class="search"
+              placeholder="Search ...."
+            />
+          </div>
         </div>
       </div>
     </nav>
@@ -56,13 +64,28 @@
 
     <div class="container">
       <h2>Popular Movies</h2>
-      <ul id="ul"></ul>
+      <ul id="popularMovies"></ul>
+    </div>
+
+    <div class="container">
+      <h2>Now Playing</h2>
+      <ul id="nowPlaying"></ul>
+    </div>
+
+    <div class="container">
+      <h2>Top Rated</h2>
+      <ul id="topRated"></ul>
+    </div>
+
+    <div class="container">
+      <h2>Upcoming</h2>
+      <ul id="upcoming"></ul>
     </div>
 
     <footer>
       <div class="content-footer">
         <div class="about-footer">
-          <h3>About</h3>
+          <h3 style="margin-bottom: 10px">About</h3>
           <p>
             VisMovies adalah platform informasi film yang menghadirkan data
             akurat dari The Movie Database (TMDB). Nikmati update film terbaru,
@@ -71,16 +94,12 @@
         </div>
         <div>
           <h3>Categories</h3>
-          <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </div>
-        <div>
-          <h3>Menu</h3>
-          <ul>
-            <li></li>
+          <ul style="display: block; margin-top: 10px">
+            <li style="font-weight: normal">Popular Movies</li>
+            <li style="font-weight: normal">Now Playing</li>
+            <li style="font-weight: normal">Popular</li>
+            <li style="font-weight: normal">Top Rated</li>
+            <li style="font-weight: normal">Upcoming</li>
           </ul>
         </div>
       </div>

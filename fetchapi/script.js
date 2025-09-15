@@ -1,11 +1,16 @@
 import getGenre from "./genre.js";
+import getNowPlaying from "./nowPaying.js";
 import getPopularMovies from "./popular.js";
 import getTopRatedMovies from "./toprated.js";
 import Swiper from "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.mjs";
+import getUpcomig from "./upcoming.js";
 
-const ul = document.getElementById("ul");
+const ul = document.getElementById("popularMovies");
 const genre = document.getElementById("genre-ul");
 const swiperWrapper = document.getElementById("swiper-wrapper");
+const nowPlayingList = document.getElementById("nowPlaying");
+const topRatedList = document.getElementById("topRated");
+const upcomingList = document.getElementById("upcoming");
 
 const swiper = new Swiper(".swiper", {
   // Optional parameters
@@ -26,8 +31,11 @@ const swiper = new Swiper(".swiper", {
 
 window.addEventListener("load", function () {
   const popularMovies = getPopularMovies();
-  const topRatedMovies = getTopRatedMovies();
+  const bannerMovies = getTopRatedMovies();
   const movieGenre = getGenre();
+  const nowPlaying = getNowPlaying();
+  const topRated = getTopRatedMovies();
+  const upcoming = getUpcomig();
 
   popularMovies.then((res) => {
     res.slice(0, 5).map((x) => {
@@ -48,30 +56,103 @@ window.addEventListener("load", function () {
     });
   });
 
-  topRatedMovies.then((res) => {
-    res.slice(2, 5).map((x) => {
+  nowPlaying.then((res) => {
+    res.slice(6, 11).map((x) => {
+      const list = document.createElement("li");
+      const image = document.createElement("img");
+      const div = document.createElement("div");
+
+      div.className = "card";
+      image.src = `https://image.tmdb.org/t/p/w500/${x.poster_path}`;
+      image.alt = x.title;
+
+      list.textContent = x.title;
+      console.log(x);
+
+      div.appendChild(image);
+      div.appendChild(list);
+      nowPlayingList.appendChild(div);
+    });
+  });
+
+  topRated.then((res) => {
+    res.slice(6, 11).map((x) => {
+      const list = document.createElement("li");
+      const image = document.createElement("img");
+      const div = document.createElement("div");
+
+      div.className = "card";
+      image.src = `https://image.tmdb.org/t/p/w500/${x.poster_path}`;
+      image.alt = x.title;
+
+      list.textContent = x.title;
+      console.log(x);
+
+      div.appendChild(image);
+      div.appendChild(list);
+      topRatedList.appendChild(div);
+    });
+  });
+
+  upcoming.then((res) => {
+    res.slice(0, 5).map((x) => {
+      const list = document.createElement("li");
+      const image = document.createElement("img");
+      const div = document.createElement("div");
+
+      div.className = "card";
+      image.src = `https://image.tmdb.org/t/p/w500/${x.poster_path}`;
+      image.alt = x.title;
+
+      list.textContent = x.title;
+      console.log(x);
+
+      div.appendChild(image);
+      div.appendChild(list);
+      upcomingList.appendChild(div);
+    });
+  });
+
+  bannerMovies.then((res) => {
+    res.slice(4, 7).map((x) => {
+      const releaseDate = new Date(`${x.release_date}`);
+      const options = {
+        day: "numeric",
+        year: "numeric",
+        month: "long",
+      };
       const div = document.createElement("div");
       const filterDark = document.createElement("div");
       const bannerContainer = document.createElement("div");
       const content = document.createElement("div");
+      const date = document.createElement("p");
       const title = document.createElement("h1");
       const description = document.createElement("p");
       const img = document.createElement("img");
 
-      // list.classList.toggle(`slide:nth-child(${key})`);
       div.classList.toggle(`swiper-slide`);
       content.classList.toggle("content");
       filterDark.classList.toggle("filter-dark");
       img.classList.toggle("banner-image");
       bannerContainer.classList.toggle("banner-container");
+      date.classList.toggle("date");
 
       div.style.backgroundImage = `url('https://image.tmdb.org/t/p/w500/${x.backdrop_path}')`;
       img.src = `https://image.tmdb.org/t/p/w500/${x.poster_path}`;
       img.alt = x.title;
       title.textContent = x.title;
       description.textContent = x.overview;
+      date.textContent = releaseDate.toLocaleDateString("en-US", options);
+
       bannerContainer.appendChild(img);
       content.appendChild(title);
+      Promise.all(x.genre_ids.map((id) => getGenre(id))).then((genres) => {
+        const genreList = document.createElement("p");
+        genreList.textContent = genres;
+        content.appendChild(genreList);
+        content.insertBefore(genreList, date);
+      });
+      content.appendChild(date);
       content.appendChild(description);
       bannerContainer.appendChild(content);
 
@@ -82,18 +163,18 @@ window.addEventListener("load", function () {
 
       swiperWrapper.appendChild(div);
     });
-  });
 
-  movieGenre.then((res) => {
-    console.log(res);
+    movieGenre.then((res) => {
+      console.log(res);
 
-    res.map((x) => {
-      const li = document.createElement("li");
+      res.map((x) => {
+        const li = document.createElement("li");
 
-      li.classList.toggle("genre");
-      li.textContent = x.name;
+        li.classList.toggle("genre");
+        li.textContent = x.name;
 
-      genre.appendChild(li);
+        genre.appendChild(li);
+      });
     });
   });
 });

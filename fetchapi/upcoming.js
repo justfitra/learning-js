@@ -1,6 +1,6 @@
-async function getGenre(id) {
+async function getUpcomig() {
   try {
-    const res = await fetch("https://api.themoviedb.org/3//genre/movie/list", {
+    const res = await fetch("https://api.themoviedb.org/3/movie/upcoming", {
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NDhmYTMwNTI5ODY2YmU2YTk2NzM3YzdjY2QxYWY4YiIsIm5iZiI6MTc1NzMzODA1OC4yOTksInN1YiI6IjY4YmVkOWNhZTFjODBkMTE1NDk0Nzk5YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.TQGfqNOWDrHi-rxWLXePxgh_SKarJI-Q8bpEgGDoKAo",
@@ -14,18 +14,10 @@ async function getGenre(id) {
     }
 
     const data = await res.json();
-
-    const genreMap = {};
-    data.genres.forEach((g) => {
-      genreMap[g.id] = g.name;
-    });
-    if (!id) {
-      return data.genres;
-    }
-    return genreMap[id];
+    return data.results;
   } catch (err) {
     console.log(err.message);
   }
 }
 
-export default getGenre;
+export default getUpcomig;
