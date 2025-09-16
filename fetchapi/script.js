@@ -42,17 +42,19 @@ window.addEventListener("load", function () {
       const list = document.createElement("li");
       const image = document.createElement("img");
       const div = document.createElement("div");
+      const a = document.createElement("a");
 
+      a.href = `/fetchapi/detail.html?id=${x.id}`;
       div.className = "card";
       image.src = `https://image.tmdb.org/t/p/w500/${x.poster_path}`;
       image.alt = x.title;
 
       list.textContent = x.title;
-      console.log(x);
 
       div.appendChild(image);
       div.appendChild(list);
-      ul.appendChild(div);
+      a.appendChild(div);
+      ul.appendChild(a);
     });
   });
 
@@ -61,7 +63,9 @@ window.addEventListener("load", function () {
       const list = document.createElement("li");
       const image = document.createElement("img");
       const div = document.createElement("div");
+      const a = document.createElement("a");
 
+      a.href = `/fetchapi/detail.html?id=${x.id}`;
       div.className = "card";
       image.src = `https://image.tmdb.org/t/p/w500/${x.poster_path}`;
       image.alt = x.title;
@@ -71,7 +75,8 @@ window.addEventListener("load", function () {
 
       div.appendChild(image);
       div.appendChild(list);
-      nowPlayingList.appendChild(div);
+      a.appendChild(div);
+      nowPlayingList.appendChild(a);
     });
   });
 
@@ -80,7 +85,9 @@ window.addEventListener("load", function () {
       const list = document.createElement("li");
       const image = document.createElement("img");
       const div = document.createElement("div");
+      const a = document.createElement("a");
 
+      a.href = `/fetchapi/detail.html?id=${x.id}`;
       div.className = "card";
       image.src = `https://image.tmdb.org/t/p/w500/${x.poster_path}`;
       image.alt = x.title;
@@ -90,7 +97,8 @@ window.addEventListener("load", function () {
 
       div.appendChild(image);
       div.appendChild(list);
-      topRatedList.appendChild(div);
+      a.appendChild(div);
+      topRatedList.appendChild(a);
     });
   });
 
@@ -99,7 +107,9 @@ window.addEventListener("load", function () {
       const list = document.createElement("li");
       const image = document.createElement("img");
       const div = document.createElement("div");
+      const a = document.createElement("a");
 
+      a.href = `/fetchapi/detail.html?id=${x.id}`;
       div.className = "card";
       image.src = `https://image.tmdb.org/t/p/w500/${x.poster_path}`;
       image.alt = x.title;
@@ -109,7 +119,8 @@ window.addEventListener("load", function () {
 
       div.appendChild(image);
       div.appendChild(list);
-      upcomingList.appendChild(div);
+      a.appendChild(div);
+      upcomingList.appendChild(a);
     });
   });
 

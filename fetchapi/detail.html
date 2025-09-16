@@ -3,19 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>fetch api</title>
+    <title>Detail</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
-    />
-
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <nav>
@@ -46,47 +35,31 @@
         </div>
       </div>
     </nav>
-
-    <div class="banner-container">
-      <!-- <div id="banner"></div> -->
-      <div class="swiper">
-        <!-- Additional required wrapper -->
-        <div id="swiper-wrapper" class="swiper-wrapper">
-          <!-- Slides -->
-        </div>
-
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-
-        <!-- If we need scrollbar -->
-        <div class="swiper-scrollbar"></div>
+    <div style="min-height: 100vh">
+      <div id="container-detail" style="position: relative">
+        <div class="filter-dark"></div>
       </div>
-    </div>
-
-    <div class="container">
-      <h2>Genre</h2>
-      <ul id="genre-ul"></ul>
-    </div>
-
-    <div class="container">
-      <h2>Popular Movies</h2>
-      <ul id="popularMovies"></ul>
-    </div>
-
-    <div class="container">
-      <h2>Now Playing</h2>
-      <ul id="nowPlaying"></ul>
-    </div>
-
-    <div class="container">
-      <h2>Top Rated</h2>
-      <ul id="topRated"></ul>
-    </div>
-
-    <div class="container">
-      <h2>Upcoming</h2>
-      <ul id="upcoming"></ul>
+      <div id="content-detail">
+        <img src="" alt="" id="img" />
+        <div id="con">
+          <h1 id="title"></h1>
+          <p id="date" style="margin-top: 8px; margin-bottom: 8px"></p>
+          <ul id="genres" style="margin-top: 8px; margin-bottom: 8px"></ul>
+          <p id="description"></p>
+        </div>
+      </div>
+      <div style="padding-left: 40px; padding-right: 40px; margin-top: 40px">
+        <h4 style="margin-bottom: 20px">Production Companies</h4>
+        <ul
+          id="production_companies"
+          style="
+            display: flex;
+            align-items: center;
+            gap: 70px;
+            margin-bottom: 40px;
+          "
+        ></ul>
+      </div>
     </div>
 
     <footer>
@@ -121,7 +94,6 @@
         <p>© 2025 VisMovies | Powered by TMDB API</p>
       </div>
     </footer>
-    <script type="module" src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="detail.js"></script>
   </body>
 </html>
