@@ -19,8 +19,9 @@ const nowPayingDelete = document.querySelector(".nowPlaying");
 const topRatedDelete = document.querySelector(".topRated");
 const upcomingDelete = document.querySelector(".upcoming");
 const searchInput = document.getElementById("search-value");
-const searchForm = document.getElementById("search-form");
 const searchResult = document.querySelector(".search-result");
+const searchForm = document.getElementById("search-form");
+const searchButton = document.getElementById("search-button");
 
 const swiper = new Swiper(".swiper", {
   // Optional parameters
@@ -193,8 +194,7 @@ window.addEventListener("load", function () {
   });
 });
 let apiResults = [];
-searchForm.addEventListener("click", (e) => {
-  e.preventDefault();
+searchButton.addEventListener("click", function () {
   bannerContainer.remove();
   container.remove();
   topRatedDelete.remove();
@@ -203,6 +203,10 @@ searchForm.addEventListener("click", (e) => {
   popularMoviesDelete.remove();
   const oldResults = document.querySelector(".search-results-container");
   if (oldResults) oldResults.remove();
+});
+searchForm.addEventListener("click", (e) => {
+  e.preventDefault();
+
   const searchResultsContainer = document.createElement("div");
   searchResultsContainer.className = "search-results-container";
   searchResult.appendChild(searchResultsContainer);
@@ -212,8 +216,38 @@ searchForm.addEventListener("click", (e) => {
     apiResults = res;
     apiResults.map((x) => {
       const resultItem = document.createElement("div");
+      const resultItemContent = document.createElement("div");
       const title = document.createElement("h1");
       const description = document.createElement("p");
+      const date = document.createElement("p");
+      const releaseDate = new Date(`${x.release_date}`);
+      const img = document.createElement("img");
+      const options = {
+        day: "numeric",
+        year: "numeric",
+        month: "long",
+      };
+      img.src = `https://image.tmdb.org/t/p/w500/${x.poster_path}`;
+      img.alt = x.title;
+      img.classList.toggle("search-img");
+      title.textContent = x.title;
+      description.textContent = x.overview;
+      date.textContent = releaseDate.toLocaleDateString("en-US", options);
+      resultItem.style.display = "flex";
+      resultItem.style.marginBottom = "20px";
+      Promise.all(x.genre_ids.map((id) => getGenre(id))).then((genres) => {
+        const genreList = document.createElement("p");
+        genreList.textContent = genres;
+        resultItemContent.appendChild(genreList);
+        resultItemContent.insertBefore(genreList, date);
+      });
+      resultItem.appendChild(img);
+      resultItemContent.appendChild(title);
+      resultItemContent.appendChild(date);
+      resultItemContent.appendChild(description);
+      resultItem.appendChild(resultItemContent);
+      searchResultsContainer.appendChild(resultItem);
+      console.log(resultItem);
     });
   });
   searchForm.reset();
