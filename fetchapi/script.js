@@ -4,6 +4,7 @@ import getPopularMovies from "./popular.js";
 import getTopRatedMovies from "./toprated.js";
 import Swiper from "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.mjs";
 import getUpcomig from "./upcoming.js";
+import searchMovie from "./search.js";
 
 const ul = document.getElementById("popularMovies");
 const genre = document.getElementById("genre-ul");
@@ -11,6 +12,15 @@ const swiperWrapper = document.getElementById("swiper-wrapper");
 const nowPlayingList = document.getElementById("nowPlaying");
 const topRatedList = document.getElementById("topRated");
 const upcomingList = document.getElementById("upcoming");
+const bannerContainer = document.querySelector(".banner-container");
+const container = document.querySelector(".container");
+const popularMoviesDelete = document.querySelector(".popularMovies");
+const nowPayingDelete = document.querySelector(".nowPlaying");
+const topRatedDelete = document.querySelector(".topRated");
+const upcomingDelete = document.querySelector(".upcoming");
+const searchInput = document.getElementById("search-value");
+const searchForm = document.getElementById("search-form");
+const searchResult = document.querySelector(".search-result");
 
 const swiper = new Swiper(".swiper", {
   // Optional parameters
@@ -70,9 +80,6 @@ window.addEventListener("load", function () {
       image.src = `https://image.tmdb.org/t/p/w500/${x.poster_path}`;
       image.alt = x.title;
 
-      list.textContent = x.title;
-      console.log(x);
-
       div.appendChild(image);
       div.appendChild(list);
       a.appendChild(div);
@@ -93,7 +100,6 @@ window.addEventListener("load", function () {
       image.alt = x.title;
 
       list.textContent = x.title;
-      console.log(x);
 
       div.appendChild(image);
       div.appendChild(list);
@@ -115,7 +121,6 @@ window.addEventListener("load", function () {
       image.alt = x.title;
 
       list.textContent = x.title;
-      console.log(x);
 
       div.appendChild(image);
       div.appendChild(list);
@@ -170,8 +175,6 @@ window.addEventListener("load", function () {
       div.appendChild(bannerContainer);
       div.appendChild(filterDark);
 
-      console.log(div);
-
       swiperWrapper.appendChild(div);
     });
 
@@ -188,4 +191,30 @@ window.addEventListener("load", function () {
       });
     });
   });
+});
+let apiResults = [];
+searchForm.addEventListener("click", (e) => {
+  e.preventDefault();
+  bannerContainer.remove();
+  container.remove();
+  topRatedDelete.remove();
+  upcomingDelete.remove();
+  nowPayingDelete.remove();
+  popularMoviesDelete.remove();
+  const oldResults = document.querySelector(".search-results-container");
+  if (oldResults) oldResults.remove();
+  const searchResultsContainer = document.createElement("div");
+  searchResultsContainer.className = "search-results-container";
+  searchResult.appendChild(searchResultsContainer);
+
+  apiResults = [];
+  searchMovie(searchInput.value).then((res) => {
+    apiResults = res;
+    apiResults.map((x) => {
+      const resultItem = document.createElement("div");
+      const title = document.createElement("h1");
+      const description = document.createElement("p");
+    });
+  });
+  searchForm.reset();
 });
