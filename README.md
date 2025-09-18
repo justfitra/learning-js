@@ -77,8 +77,8 @@ Bisa membuat aplikasi web front-end sederhana.
   - Promise ✔️
   - async/await ✔️
 - Error handling (`try/catch`) ✔️
-- Fetch API (ambil data dari server)
-- JSON
+- Fetch API (ambil data dari server) ✔️
+- JSON ✔️
 
 🎯 **Target Akhir:**  
 Bisa membuat aplikasi yang ambil data dari internet & menata file dalam struktur folder.
