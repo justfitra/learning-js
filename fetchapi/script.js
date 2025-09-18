@@ -40,6 +40,19 @@ const swiper = new Swiper(".swiper", {
   },
 });
 
+document.querySelectorAll(".movie-scroll-wrapper").forEach((wrapper) => {
+  const leftBtn = wrapper.querySelector(".scroll-btn.left");
+  const rightBtn = wrapper.querySelector(".scroll-btn.right");
+  const movieList = wrapper.querySelector(".card-list");
+
+  leftBtn.addEventListener("click", () => {
+    movieList.scrollBy({ left: -500, behavior: "smooth" });
+  });
+
+  rightBtn.addEventListener("click", () => {
+    movieList.scrollBy({ left: 500, behavior: "smooth" });
+  });
+});
 window.addEventListener("load", function () {
   const popularMovies = getPopularMovies();
   const bannerMovies = getTopRatedMovies();
@@ -49,7 +62,7 @@ window.addEventListener("load", function () {
   const upcoming = getUpcomig();
 
   popularMovies.then((res) => {
-    res.slice(0, 5).map((x) => {
+    res.map((x) => {
       const list = document.createElement("li");
       const image = document.createElement("img");
       const div = document.createElement("div");
@@ -70,7 +83,7 @@ window.addEventListener("load", function () {
   });
 
   nowPlaying.then((res) => {
-    res.slice(6, 11).map((x) => {
+    res.map((x) => {
       const list = document.createElement("li");
       const image = document.createElement("img");
       const div = document.createElement("div");
@@ -80,7 +93,7 @@ window.addEventListener("load", function () {
       div.className = "card";
       image.src = `https://image.tmdb.org/t/p/w500/${x.poster_path}`;
       image.alt = x.title;
-
+      list.textContent = x.title;
       div.appendChild(image);
       div.appendChild(list);
       a.appendChild(div);
@@ -89,7 +102,7 @@ window.addEventListener("load", function () {
   });
 
   topRated.then((res) => {
-    res.slice(6, 11).map((x) => {
+    res.map((x) => {
       const list = document.createElement("li");
       const image = document.createElement("img");
       const div = document.createElement("div");
@@ -110,7 +123,7 @@ window.addEventListener("load", function () {
   });
 
   upcoming.then((res) => {
-    res.slice(0, 5).map((x) => {
+    res.map((x) => {
       const list = document.createElement("li");
       const image = document.createElement("img");
       const div = document.createElement("div");
