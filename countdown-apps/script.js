@@ -1,48 +1,17 @@
-const timeInput = document.getElementById("time-input");
-const form = document.getElementById("form");
 const secondResult = document.getElementById("seconds-result");
 const minutesResult = document.getElementById("minutes-result");
 const hoursResult = document.getElementById("hours-result");
-const stopButton = document.getElementById("stop");
-const startButton = document.getElementById("start");
+const daysResult = document.getElementById("days-result");
 
-let timeValue;
-form.addEventListener("click", function (e) {
-  e.preventDefault();
+const timeToDays = 1825 * 24 * 60 * 60 * 1000;
 
-  timeValue = timeInput.value;
-  const timeToDays = timeValue * 60 * 1000;
+let countDownDate = new Date().getTime() + timeToDays;
 
-  if (timeToDays < 60000) {
-    console.log("error minimal 1 menit");
-  } else {
-    let countDownDate = new Date().getTime() + timeToDays;
-    if (timeToDays <= 34560000) {
-      const time = setInterval(updateTime, 1000, countDownDate);
-
-      stopButton.addEventListener("click", function () {
-        clearInterval(time);
-      });
-
-      startButton.addEventListener("click", function () {
-        const start = setInterval(updateTime, 1000, newCountDownDate);
-        stopButton.addEventListener("click", function () {
-          clearInterval(start);
-        });
-      });
-    } else {
-      console.log("error maksimal 24 jam");
-    }
-  }
-
-  form.reset();
-});
-
-const updateTime = (countDownDate) => {
+const time = setInterval(() => {
   const now = new Date().getTime();
 
   const difference = countDownDate - now;
-
+  var newDays = Math.floor(difference / (1000 * 60 * 60 * 24));
   const newHours = Math.floor(
     (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
   );
@@ -52,6 +21,7 @@ const updateTime = (countDownDate) => {
   secondResult.textContent = newSeconds + 1;
   minutesResult.textContent = newMinutes;
   hoursResult.textContent = newHours;
+  daysResult.textContent = newDays;
 
   console.log(newHours, newMinutes, newSeconds + 1);
 
@@ -59,5 +29,4 @@ const updateTime = (countDownDate) => {
     clearInterval(updateTime);
     console.log("waktu Habis");
   }
-  return difference;
-};
+}, 1000);

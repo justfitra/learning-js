@@ -4,20 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Focus Session Apps</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <form id="form">
-      <input type="number" id="time-input" />
-      <button type="submit">Sumbit</button>
-    </form>
-
-    <button id="stop" type="button">Stop</button>
-    <button id="start" type="button">Start</button>
-
-    <div style="display: flex">
-      <p id="hours-result">0 :</p>
-      <p id="minutes-result">0 :</p>
-      <p id="seconds-result">0</p>
+    <h1>Countdown To Goals</h1>
+    <div class="time-container">
+      <div>
+        <h2 id="days-result">0</h2>
+        <h3>Days</h3>
+      </div>
+      <div>
+        <h2 id="hours-result">0</h2>
+        <h3>Hours</h3>
+      </div>
+      <div>
+        <h2 id="minutes-result">0</h2>
+        <h3>Minutes</h3>
+      </div>
+      <div>
+        <h2 id="seconds-result">0</h2>
+        <h3>Seconds</h3>
+      </div>
     </div>
 
     <script src="script.js"></script>
