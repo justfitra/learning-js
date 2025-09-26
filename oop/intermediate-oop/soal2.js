@@ -58,7 +58,7 @@ class Course {
   }
 
   toString() {
-    const insturktur = this.account.find((res) => res.role === "instruktur");
+    const insturktur = this.account.filter((res) => res.role === "instruktur");
     const student = this.account.filter((res) => res.role === "student");
     console.log(
       `Kursus ${this.course} Instruktur ${insturktur.username} Peserta: ${student.length}`

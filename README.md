@@ -71,6 +71,7 @@ Bisa membuat aplikasi web front-end sederhana.
 
 **Materi:**
 
+- OOP JavaScript ✔️
 - Modularisasi (`export` & `import`) ✔️
 - Asynchronous JavaScript:
   - `setTimeout`, `setInterval` ✔️
