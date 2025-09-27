@@ -73,15 +73,12 @@ class Book {
     this.books = [];
   }
 
-  borrrowBook() {
-    if (!this.#stock) {
-      throw new Error("This book out of stock");
+  borrowBook() {
+    if (this.#stock === 0) {
+      throw new Error("This Book Sold out");
     }
-    this.#stock -= 1;
 
-    return `${this.title} writer ${this.writer} has borowed. Stock : ${
-      this.#stock
-    }`;
+    return (this.#stock -= 1);
   }
 
   returnBook() {
@@ -93,21 +90,7 @@ class Book {
   }
 
   getInfo() {
-    const result = this.books.map((res) => {
-      let type;
-      let x;
-      if (res.weight) {
-        type = "Print Book";
-        x = res.weight;
-      } else {
-        type = "E-Book";
-        x = res.fileSize;
-      }
-      return `Judul : ${res.title} , Penulis : ${res.writer} , Stok :  ${
-        res.books[0]
-      }, Tipe : ${type}, ${res.weight ? "Berat : " : "Ukuran File : "} ${x}`;
-    });
-    return result;
+    return this.books;
   }
 
   totalStock() {
@@ -124,8 +107,9 @@ class EBook extends Book {
   }
 
   toString() {
-    const stock = this.books.map((res) => res);
-    console.log(`E-Book ${this.title}, file ${this.fileSize}MB, stok ${stock}`);
+    console.log(
+      `E-Book ${this.title}, file ${this.fileSize}MB, stok ${this.borrowBook()}`
+    );
   }
 }
 
@@ -136,9 +120,10 @@ class PrintedBook extends Book {
   }
 
   toString() {
-    const stock = this.books.map((res) => res);
     console.log(
-      `Buku Cetak ${this.title}, berat ${this.weight}gr, stok ${stock}`
+      `Buku Cetak ${this.title}, berat ${
+        this.weight
+      }gr, stok ${this.borrowBook()}`
     );
   }
 }
@@ -146,10 +131,11 @@ class PrintedBook extends Book {
 class Member {
   constructor(name) {
     this.name = name;
+    this.borrowBooks = [];
   }
 
-  borrow(book) {
-    return book;
+  borrow() {
+    throw new Error("This Method called in childern Class");
   }
 }
 
@@ -157,15 +143,18 @@ class StudentMember extends Member {
   constructor(name) {
     super(name);
     this.role = "Student";
-    this.books = [];
   }
 
-  studentBorrow() {
-    if (this.books.length > 3) {
+  borrow(book) {
+    const studentFilter = this.borrowBooks.filter(
+      (res) => res.role === "Student"
+    );
+    if (studentFilter.length > 3) {
       throw new Error(`${this.role} can only borrow 3 books`);
     }
 
-    return this.books;
+    book.borrowBook();
+    this.borrowBooks.push({ ...book, role: this.role });
   }
 }
 
@@ -173,15 +162,17 @@ class TeacherMember extends Member {
   constructor(name) {
     super(name);
     this.role = "Teacher";
-    this.books = [];
   }
 
-  studentBorrow() {
-    if (this.books.length > 5) {
+  borrow(book) {
+    const teacherFilter = this.borrowBooks.filter(
+      (res) => res.role === "Teacher"
+    );
+    if (teacherFilter.length > 5) {
       throw new Error(`${this.role} can only borrow 5 books`);
     }
-
-    return this.books;
+    book.borrowBook();
+    this.borrowBooks.push({ ...book, role: this.role });
   }
 }
 
@@ -203,31 +194,19 @@ console.log(Library.getLibraryName());
 const eBook = new EBook("The Black Window", "Fatkur", 20);
 const eBook1 = new EBook("Dari Penjara Ke Penjara", "Tan Malaka", 20);
 const printedBook = new PrintedBook("Makanya Mikir", "Cania", 10);
-// const printedBook1 = new PrintedBook("Madilog", "Tan Malaka", 10);
+const printedBook1 = new PrintedBook("Madilog", "Tan Malaka", 10);
+
+const studentMember = new StudentMember("Fitra");
+const teacherMember = new TeacherMember("Alice");
+
+studentMember.borrow(eBook);
+studentMember.borrow(eBook);
+studentMember.borrow(eBook);
+teacherMember.borrow(printedBook);
+teacherMember.borrow(printedBook1);
+teacherMember.borrow(printedBook1);
+teacherMember.borrow(printedBook1);
+teacherMember.borrow(printedBook1);
+
 const book = new Book();
-book.books.push(eBook, eBook1, printedBook);
-
-const student = new Member("Fitra");
-const teacher = new Member("Aly");
-const studentMember = new StudentMember(student);
-const teacherMember = new TeacherMember(teacher);
-
-studentMember.books.push(student.borrow(eBook.borrrowBook()));
-studentMember.books.push(student.borrow(eBook1.borrrowBook()));
-studentMember.books.push(student.borrow(printedBook.borrrowBook()));
-teacherMember.books.push(teacher.borrow(printedBook.borrrowBook()));
-// studentMember.books.push(member.borrow(printedBook1.borrrowBook()));
-
-try {
-  studentMember.studentBorrow();
-} catch (err) {
-  console.log(err);
-}
-
-studentMember.toString();
-eBook.toString();
-printedBook.toString();
-const library = new Library(book.totalStock());
 console.log(book.getInfo());
-
-console.log(library.toString());
