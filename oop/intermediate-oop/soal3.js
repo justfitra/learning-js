@@ -66,18 +66,17 @@ Cetak nama perpustakaan dengan Library.getLibraryName().
 */
 
 class Book {
-  #stock = 10;
-  constructor(title, writer) {
+  #stock;
+  constructor(title, writer, stock = 10) {
     this.title = title;
     this.writer = writer;
-    this.books = [{ stock: this.#stock }];
+    this.#stock = stock;
   }
 
   borrowBook() {
     if (this.#stock === 0) {
       throw new Error("This Book Sold out");
     }
-    this.books.push({ stock: this.#stock });
     return (this.#stock -= 1);
   }
 
@@ -90,12 +89,11 @@ class Book {
   }
 
   getInfo() {
-    return this.books;
+    return `Book ${this.title}, stock : ${this.#stock}`;
   }
 
-  totalStock() {
-    const total = this.books.reduce((arr, curr) => arr + curr.books[0], 0);
-    return total;
+  stock() {
+    return this.#stock;
   }
 }
 
@@ -176,26 +174,38 @@ class TeacherMember extends Member {
 }
 
 class Library {
-  constructor(allStock) {
-    this.allStock = allStock;
+  constructor() {
+    this.books = [];
+  }
+
+  addBook(book) {
+    this.books.push(book);
+  }
+
+  listBook() {
+    return this.books.map((res) => res.getInfo());
   }
   static getLibraryName() {
     return "Perpustakaan Fitra";
   }
 
   toString() {
-    return `Perpustakaan Fitra, total koleksi: ${this.allStock}`;
+    const stock = this.books.map((res) => res.stock());
+    const totalStock = stock.reduce((acc, curr) => acc + curr, 0);
+    return `Perpustakaan Fitra, total koleksi: ${totalStock}`;
   }
 }
 
 console.log(Library.getLibraryName());
-const book = new Book();
+const library = new Library();
 const eBook = new EBook("The Black Window", "Fatkur", 20);
+library.addBook(eBook);
 const eBook1 = new EBook("Dari Penjara Ke Penjara", "Tan Malaka", 20);
+library.addBook(eBook1);
 const printedBook = new PrintedBook("Makanya Mikir", "Cania", 10);
+library.addBook(printedBook);
 const printedBook1 = new PrintedBook("Madilog", "Tan Malaka", 10);
-
-book.books.push(eBook, eBook1, printedBook, printedBook1);
+library.addBook(printedBook1);
 
 const studentMember = new StudentMember("Fitra");
 const teacherMember = new TeacherMember("Alice");
@@ -208,4 +218,6 @@ teacherMember.borrow(printedBook1);
 teacherMember.borrow(printedBook1);
 teacherMember.borrow(printedBook1);
 teacherMember.borrow(printedBook1);
-console.log(book.getInfo());
+
+console.log(library.listBook());
+console.log(library.toString());
