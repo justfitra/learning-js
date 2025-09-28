@@ -70,14 +70,14 @@ class Book {
   constructor(title, writer) {
     this.title = title;
     this.writer = writer;
-    this.books = [];
+    this.books = [{ stock: this.#stock }];
   }
 
   borrowBook() {
     if (this.#stock === 0) {
       throw new Error("This Book Sold out");
     }
-
+    this.books.push({ stock: this.#stock });
     return (this.#stock -= 1);
   }
 
@@ -95,7 +95,6 @@ class Book {
 
   totalStock() {
     const total = this.books.reduce((arr, curr) => arr + curr.books[0], 0);
-
     return total;
   }
 }
@@ -190,11 +189,13 @@ class Library {
 }
 
 console.log(Library.getLibraryName());
-
+const book = new Book();
 const eBook = new EBook("The Black Window", "Fatkur", 20);
 const eBook1 = new EBook("Dari Penjara Ke Penjara", "Tan Malaka", 20);
 const printedBook = new PrintedBook("Makanya Mikir", "Cania", 10);
 const printedBook1 = new PrintedBook("Madilog", "Tan Malaka", 10);
+
+book.books.push(eBook, eBook1, printedBook, printedBook1);
 
 const studentMember = new StudentMember("Fitra");
 const teacherMember = new TeacherMember("Alice");
@@ -207,6 +208,4 @@ teacherMember.borrow(printedBook1);
 teacherMember.borrow(printedBook1);
 teacherMember.borrow(printedBook1);
 teacherMember.borrow(printedBook1);
-
-const book = new Book();
 console.log(book.getInfo());
