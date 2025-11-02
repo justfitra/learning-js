@@ -1,11 +1,11 @@
-# 📚 Roadmap Belajar JavaScript (Vanilla JS)
+# Roadmap Belajar JavaScript (Vanilla JS)
 
 Repository ini berisi catatan, latihan, dan progres belajar **JavaScript Vanilla** step-by-step, mulai dari dasar sampai siap mengerjakan proyek nyata.  
 Target utama: menguasai fundamental JavaScript sebelum lanjut ke framework modern (React.js / Next.js).
 
 ---
 
-## ✅ Level 1: Dasar-dasar JavaScript (1–7 Hari)
+## Level 1: Dasar-dasar JavaScript (1–7 Hari)
 
 **Tujuan:** Memahami cara kerja JavaScript dan mampu menulis kode dasar.
 
@@ -22,12 +22,12 @@ Target utama: menguasai fundamental JavaScript sebelum lanjut ke framework moder
 - Array & method dasar (`push`, `pop`, `length`) ✔️
 - Object dasar ✔️
 
-🎯 **Target Akhir:**  
+**Target Akhir:**  
 Bisa bikin program sederhana (kalkulator, biodata otomatis) & memahami logika dasar coding.
 
 ---
 
-## ✅ Level 2: Struktur & Logika Lanjut (7–14 Hari)
+## Level 2: Struktur & Logika Lanjut (7–14 Hari)
 
 **Tujuan:** Mampu mengatur alur kode, mengelola data, dan memahami logika lebih dalam.
 
@@ -42,13 +42,13 @@ Bisa bikin program sederhana (kalkulator, biodata otomatis) & memahami logika da
 - Destructuring & spread operator ✔️
 - Optional chaining (`?.`) ✔️
 
-🎯 **Target Akhir:**  
+**Target Akhir:**  
 Mampu mengolah data dan membuat logic aplikasi lebih kompleks.  
 Mulai menulis kode dengan gaya rapi & efisien.
 
 ---
 
-## ✅ Level 3: DOM & Interaksi Web (14–21 Hari)
+## Level 3: DOM & Interaksi Web (14–21 Hari)
 
 **Tujuan:** Menghubungkan JavaScript dengan tampilan web (HTML/CSS).
 
@@ -60,12 +60,12 @@ Mulai menulis kode dengan gaya rapi & efisien.
 - Membuat website interaktif (contoh: To-do List) ✔️
 - Local Storage ✔️
 
-🎯 **Target Akhir:**  
+**Target Akhir:**  
 Bisa membuat aplikasi web front-end sederhana.
 
 ---
 
-## ✅ Level 4: Modularisasi & Asynchronous (21–28 Hari)
+## Level 4: Modularisasi & Asynchronous (21–28 Hari)
 
 **Tujuan:** Mengelola proyek lebih besar & memahami data asynchronous.
 
@@ -81,12 +81,12 @@ Bisa membuat aplikasi web front-end sederhana.
 - Fetch API (ambil data dari server) ✔️
 - JSON ✔️
 
-🎯 **Target Akhir:**  
+**Target Akhir:**  
 Bisa membuat aplikasi yang ambil data dari internet & menata file dalam struktur folder.
 
 ---
 
-## 🔜 Level 5: Framework & Proyek Nyata (1 Bulan +)
+## Level 5: Framework & Proyek Nyata (1 Bulan +)
 
 **Tujuan:** Siap kerja freelance, bangun proyek nyata, atau lanjut ke AI/Backend.
 
@@ -98,25 +98,15 @@ Bisa membuat aplikasi yang ambil data dari internet & menata file dalam struktur
 - Dasar backend: Node.js / Express
 - TypeScript dasar
 
-🎯 **Proyek Nyata (3+):**
+**Proyek Nyata (3+):**
 
-- Website makanan 🍔
-- Aplikasi to-do list ✅
-- Website portofolio / jasa 💼
-
----
-
-## 📌 Status Progress
-
-- [x] Level 1 – Dasar JavaScript
-- [x] Level 2 – Logika Lanjut
-- [x] Level 3 – DOM & Interaksi Web
-- [x] Level 4 – Modularisasi & Async
-- [ ] Level 5 – Framework & Proyek Nyata
+- Website makanan 
+- Aplikasi to-do list 
+- Website portofolio / jasa 
 
 ---
 
-## 🛠️ Tech Stack (Roadmap)
+##  Tech Stack (Roadmap)
 
 <p>
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" width="40" alt="JavaScript"/>
@@ -129,6 +119,6 @@ Bisa membuat aplikasi yang ambil data dari internet & menata file dalam struktur
 
 ---
 
-## 📜 License
+## License
 
 MIT © 2025 – Fitra Maulana
