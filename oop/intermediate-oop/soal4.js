@@ -1,6 +1,4 @@
 // Grab Application
-// Grab Application
-
 class User {
   #password;
   #orders = [];
